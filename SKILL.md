@@ -265,7 +265,7 @@ ssh -i $SSH_KEY_PATH -p $SSH_TARGET_PORT $SSH_TARGET_USER@$SSH_TARGET_HOST 'dock
 ## 项目地址 | Project Links
 
 - **ClawHub**: https://clawhub.com/skill/ssh-remote-control
-- **GitHub**: https://github.com/openclaw/skill-ssh-remote-control
+- **GitHub**: https://github.com/lixiang92229/skill-ssh-remote-control
 
 ## 版本历史 | Changelog
 
