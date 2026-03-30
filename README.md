@@ -18,9 +18,9 @@
 ### 1. 配置环境变量
 
 ```bash
-export SSH_TARGET_HOST="your-mac.51mypc.cn"
-export SSH_TARGET_PORT="43899"
-export SSH_TARGET_USER="lixiang"
+export SSH_TARGET_HOST="your-tunnel-address.example.com"
+export SSH_TARGET_PORT="12345"
+export SSH_TARGET_USER="your-username"
 export SSH_KEY_PATH="/path/to/private/key"
 ```
 
