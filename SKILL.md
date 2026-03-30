@@ -196,9 +196,12 @@ ssh -i $SSH_KEY_PATH -p $SSH_TARGET_PORT $SSH_TARGET_USER@$SSH_TARGET_HOST 'dock
 2. **配置SSH**
    ```bash
    sudo nano /etc/ssh/sshd_config
-   # 确保有：PasswordAuthentication yes
-   #         PubkeyAuthentication yes
+   # 确保有：
+   PasswordAuthentication no
+   PubkeyAuthentication yes
    ```
+
+   > ⚠️ **安全建议**：禁用密码认证，只允许密钥认证
 
 3. **重启SSH服务**
    ```bash
@@ -225,6 +228,36 @@ ssh -i $SSH_KEY_PATH -p $SSH_TARGET_PORT $SSH_TARGET_USER@$SSH_TARGET_HOST 'dock
   ```
   command="/usr/local/bin/limited.sh",no-pty,permitopen="*",ssh-ed25519 AAAA...
   ```
+
+### 4. 最小权限原则
+
+**使用专用受限账户**（而非 root/管理员）：
+- 在远程电脑上创建专用账户，如 `aiagent`
+- 只授权必要的操作权限
+- 避免 AI 使用管理员权限
+
+**密钥权限限制**：
+- 使用 `from=` 限制连接来源 IP
+- 使用 `command=` 限制可执行命令
+- 使用 `no-pty` 禁止分配伪终端
+- 使用 `permitopen=` 限制端口转发
+
+示例（`~/.ssh/authorized_keys`）：
+```
+from="你的服务器IP",no-pty,command="/bin/false",ssh-ed25519 AAAA...
+```
+
+### 5. 密钥保护建议
+
+- **passphrase 保护**：为私钥设置密码，防止密钥泄露被直接使用
+- **专用密钥**：为本技能创建单独的 SSH 密钥对，可随时 revocation
+- **定期轮换**：定期更换 SSH 密钥对
+
+### 6. 监控与审计
+
+- 定期查看 SSH 登录日志
+- 监控异常的登录时间和来源
+- 记录 AI 执行的关键命令（本地日志）
 
 ## 故障排除
 
@@ -269,5 +302,10 @@ ssh -i $SSH_KEY_PATH -p $SSH_TARGET_PORT $SSH_TARGET_USER@$SSH_TARGET_HOST 'dock
 
 ## 版本历史 | Changelog
 
+- 1.0.6 (2026-03-31): 修复 Metadata 不匹配，修复 PasswordAuthentication yes 问题，强化安全建议
+- 1.0.5 (2026-03-31): 重写 README 为整段中英双语格式
+- 1.0.4 (2026-03-31): README 格式修正
+- 1.0.3 (2026-03-31): 修复 GitHub 链接
+- 1.0.2 (2026-03-31): 添加项目链接
 - 1.0.1 (2026-03-31): 强调安全性，通用内网穿透工具，本地完全可控
 - 1.0.0 (2026-03-30): 初始版本，支持macOS/Linux远程控制
