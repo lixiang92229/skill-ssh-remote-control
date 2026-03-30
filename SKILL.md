@@ -262,6 +262,12 @@ ssh -i $SSH_KEY_PATH -p $SSH_TARGET_PORT $SSH_TARGET_USER@$SSH_TARGET_HOST 'dock
 - **安全**: SSH加密隧道，无需暴露桌面
 - **高效**: CLI对AI友好，Token消耗低
 
-## 版本历史
+## 项目地址 | Project Links
 
+- **ClawHub**: https://clawhub.com/skill/ssh-remote-control
+- **GitHub**: https://github.com/openclaw/skill-ssh-remote-control
+
+## 版本历史 | Changelog
+
+- 1.0.1 (2026-03-31): 强调安全性，通用内网穿透工具，本地完全可控
 - 1.0.0 (2026-03-30): 初始版本，支持macOS/Linux远程控制
