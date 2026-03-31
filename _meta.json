@@ -1,5 +1,5 @@
 {
   "primaryEnv": "SSH_TARGET_HOST",
   "requiredEnvVars": ["SSH_TARGET_HOST", "SSH_TARGET_PORT", "SSH_TARGET_USER", "SSH_KEY_PATH"],
-  "version": "1.0.6"
+  "version": "1.0.9"
 }

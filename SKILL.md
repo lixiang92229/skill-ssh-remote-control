@@ -1,7 +1,7 @@
 ---
 name: ssh-remote-control
 description: SSH远程控制电脑 - 让AI Agent通过SSH连接和操作远程Mac/Linux电脑，无需在被控电脑上安装任何agent工具。一个服务器上的AI，触手伸向多台远程设备。
-metadata: {"openclaw": {"homepage": "https://github.com/openclaw/skill-ssh-remote-control"}}
+metadata: {"openclaw": {"homepage": "https://github.com/lixiang92229/skill-ssh-remote-control"}}
 ---
 
 # SSH Remote Control - 远程控制技能
@@ -222,6 +222,7 @@ ssh -i $SSH_KEY_PATH -p $SSH_TARGET_PORT $SSH_TARGET_USER@$SSH_TARGET_HOST 'dock
 - 私钥文件权限必须是600
 - 不要将私钥分享给他人
 - 定期更换密钥
+- ⚠️ **重要**：SSH私钥路径被AI获取后，AI理论上可访问任何使用该密钥的服务器。务必使用**专用密钥对**，不要使用日常登录密钥。
 
 ### 2. 防火墙
 - SSH端口不要暴露给0.0.0.0
@@ -308,6 +309,7 @@ from="你的服务器IP",no-pty,command="/bin/false",ssh-ed25519 AAAA...
 
 ## 版本历史 | Changelog
 
+- 1.0.9 (2026-03-31): 修复 homepage URL 与 GitHub 一致，强化私钥安全警告
 - 1.0.6 (2026-03-31): 修复 Metadata 不匹配，修复 PasswordAuthentication yes 问题，强化安全建议
 - 1.0.5 (2026-03-31): 重写 README 为整段中英双语格式
 - 1.0.4 (2026-03-31): README 格式修正
